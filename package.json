@@ -4,7 +4,7 @@
   "description": "",
   "main": "server/service.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "nyc mocha --recursive test",
     "start": "node bin/run"
   },
   "author": "Tamer M Bahgat",
@@ -15,5 +15,11 @@
     "express": "^4.16.1",
     "moment": "^2.18.1",
     "superagent": "^3.6.1"
+  },
+  "devDependencies": {
+    "mocha": "^4.0.1",
+    "nyc": "^11.2.1",
+    "should": "^13.1.2",
+    "supertest": "^3.0.0"
   }
 }
