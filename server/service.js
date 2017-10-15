@@ -5,10 +5,11 @@ const service = express();
 const request = require('superagent');
 
 module.exports = (config) => {
-  service.get('/service/:location', (req, res, next) => {
+  const log = config.log();
+  service.get('/service/:location', (req, res) => {
     request.get('api.openweathermap.org/data/2.5/weather?q= ' + req.params.location + '&APPID' + config.openweathermap_api_appid, (err, response) => {
       if (err) {
-        console.log(err);
+        log.error(err);
         return res.sendStatus(404);
       }
       const temp = response.body.main.temp;
@@ -17,4 +18,4 @@ module.exports = (config) => {
     });
   });
   return service;
-}
+};
