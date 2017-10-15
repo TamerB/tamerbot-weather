@@ -15,8 +15,8 @@ server.on('listening', function () {
   const announce = () => {
     request.put(`http://localhost:3000/service/weather/${server.address().port}`, (err, res) => {
       if (err) {
-        log.error(err);
-        log.error('Error connecting to tamerbot');
+        log.debug(err);
+        log.info('Error connecting to tamerbot');
         return;
       }
 

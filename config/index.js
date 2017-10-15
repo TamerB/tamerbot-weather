@@ -3,13 +3,13 @@ const bunyan = require('bunyan');
 
 const log = {
   development: () => {
-    return bunyan.createLogger({name: 'tamerbot-development', level: 'debug'});
+    return bunyan.createLogger({name: 'tamerbot-weather-development', level: 'debug'});
   },
   production: () => {
-    return bunyan.createLogger({name: 'tamerbot-production', level: 'info'});
+    return bunyan.createLogger({name: 'tamerbot-weather-production', level: 'info'});
   },
   test: () => {
-    return bunyan.createLogger({name: 'tamerbot-test', level: 'fatal'});
+    return bunyan.createLogger({name: 'tamerbot-weather-test', level: 'fatal'});
   }
 };
 
