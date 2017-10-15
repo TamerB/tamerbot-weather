@@ -7,6 +7,13 @@
     "test": "ODE_ENV=test eslint bin server && nyc mocha --recursive test",
     "start": "node bin/run"
   },
+  "engine": {
+    "node": "8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TamerB/tamerbot-weather.git"
+  },
   "author": "Tamer M Bahgat",
   "license": "ISC",
   "dependencies": {
