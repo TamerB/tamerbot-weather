@@ -13,15 +13,18 @@ server.on('listening', function () {
   log.info(`Slack-Bot-Time is listening on ${server.address().port} in ${service.get('env')} mode.`);
 
   const announce = () => {
-    request.put(`http://localhost:3000/service/weather/${server.address().port}`, (err, res) => {
-      if (err) {
-        log.debug(err);
-        log.info('Error connecting to tamerbot');
-        return;
-      }
+    request.put(`http://localhost:3000/service/weather/${server.address().port}`)
+      .set('X-TAMERBOT-SERVICE-TOKEN', config.serviceAccessToken)
+      .set('X-TAMERBOT-API-TOKEN', config.tamerbotApiToken)
+      .end((err, res) => {
+        if (err) {
+          log.debug(err);
+          log.info('Error connecting to tamerbot');
+          return;
+        }
 
-      log.info(res.body);
-    });
+        log.info(res.body);
+      });
   };
 
   announce();

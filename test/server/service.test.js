@@ -19,6 +19,8 @@ describe('The express service', () => {
   it('should return HTTP 200 and reply with a valid result', (done) => {
     request(service)
       .get('/service/vienna')
+      .set('X-TAMERBOT-API-TOKEN', config.tamerbotApiToken)
+      .set('X-TAMERBOT-SERVICE-TOKEN', config.serviceAcessToken)
       .expect(200)
       .end((err, res) => {
         if (err) return done(err);

@@ -7,6 +7,10 @@ const request = require('superagent');
 module.exports = (config) => {
   const log = config.log();
   service.get('/service/:location', (req, res) => {
+
+    if (req.get('X-TAMERBOT-SERVICE-TOKEN') !== config.serviceAccessToken) {
+      return res.sendStatus(403);
+    }
     request.get('api.openweathermap.org/data/2.5/weather?q= ' + req.params.location + '&APPID' + config.openweathermap_api_appid, (err, response) => {
       if (err) {
         log.error(err);

@@ -4,10 +4,10 @@
   "description": "",
   "main": "server/service.js",
   "scripts": {
-    "test": "ODE_ENV=test eslint bin server && nyc mocha --recursive test",
-    "start": "node bin/run"
+    "test": "ODE_ENV=test snyk test && eslint bin server && nyc mocha --recursive test | ./node_modules/.bin/bunyan",
+    "start": "node bin/run | ./node_modules/.bin/bunyan"
   },
-  "engine": {
+  "engines": {
     "node": "8.0.0"
   },
   "repository": {

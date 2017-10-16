@@ -1,5 +1,6 @@
 require('dotenv').config();
 const bunyan = require('bunyan');
+const serviceAcessToken = require('crypto').randomBytes(16).toString('hex').slice(0, 23);
 
 const log = {
   development: () => {
@@ -15,6 +16,8 @@ const log = {
 
 module.exports = {
   openweathermap_api_appid: process.env.OPENWEATHERMAP_API_APPID,
+  tamerbotApiToken: process.env.TAMERBOT_API_TOKEN,
+  serviceAccessToken: serviceAcessToken,
   log: (env) => {
     if (env) return log[env]();
     return log[process.env.NODE_ENV || 'development']();
