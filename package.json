@@ -4,7 +4,7 @@
   "description": "",
   "main": "server/service.js",
   "scripts": {
-    "test": "ODE_ENV=test snyk test && eslint bin server && nyc mocha --recursive test | ./node_modules/.bin/bunyan",
+    "test": "ODE_ENV=test eslint bin server && nyc mocha --recursive test | ./node_modules/.bin/bunyan",
     "start": "node bin/run | ./node_modules/.bin/bunyan"
   },
   "engines": {
